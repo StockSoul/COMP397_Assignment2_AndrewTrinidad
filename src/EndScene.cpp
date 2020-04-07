@@ -4,6 +4,7 @@
 #include "glm/gtx/string_cast.hpp"
 #include <algorithm>
 #include <iomanip>
+#include "ScoreBoardManager.h"
 
 EndScene::EndScene()
 {
@@ -15,14 +16,14 @@ EndScene::~EndScene()
 
 void EndScene::draw()
 {
-	m_pOcean->draw();
+	m_pBackground->draw();
 	m_pGameOverLabel->draw();
 	m_pRestartButton->draw();
 }
 
 void EndScene::update()
 {
-	m_pOcean->update();
+	m_pBackground->update();
 	m_pRestartButton->setMousePosition(m_mousePosition);
 	m_pRestartButton->ButtonClick();
 }
@@ -98,11 +99,11 @@ void EndScene::handleEvents()
 
 void EndScene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 	
 	const SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pGameOverLabel = new Label("Game Over", "Dock51", 80, yellow, glm::vec2(320.0f, 100.0f));
+	m_pGameOverLabel = new Label("Game Over", "NeonFuture", 80, yellow, glm::vec2(320.0f, 100.0f));
 	m_pGameOverLabel->setParent(this);
 	addChild(m_pGameOverLabel);
 

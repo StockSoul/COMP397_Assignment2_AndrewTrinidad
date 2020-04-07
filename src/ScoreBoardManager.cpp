@@ -6,10 +6,10 @@ ScoreBoardManager* ScoreBoardManager::m_pInstance = nullptr;
 void ScoreBoardManager::Start()
 {
 	const SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pLivesLabel = new Label("Lives: 5", "Consolas", 24, yellow,
+	m_pLivesLabel = new Label("Lives: 5", "NeonFuture", 24, yellow,
 		glm::vec2(10.0f, 10.0f), TTF_STYLE_NORMAL, false);
 
-	m_pScoreLabel = new Label("Score: 0", "Consolas", 24, yellow,
+	m_pScoreLabel = new Label("Score: 0", "NeonFuture", 24, yellow,
 		glm::vec2(470.0f, 10.0f), TTF_STYLE_NORMAL, false);
 }
 

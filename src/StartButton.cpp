@@ -4,7 +4,7 @@
 StartButton::StartButton()
 	// call super constructor
 	:Button(
-		"../Assets/textures/StartButton.png",
+		"../Assets/textures/Start.png",
 		"startButton",
 		START_BUTTON, glm::vec2(400.0f, 300.0f)), m_isClicked(false)
 {

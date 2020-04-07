@@ -38,6 +38,16 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 				TheSoundManager::Instance()->playSound("thunder", 0);
 				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
 				break;
+			case COIN:
+				std::cout << "Collision with COIN!" << std::endl;
+				TheSoundManager::Instance()->playSound("collect", 0);
+				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 100);
+				break;
+			case ENEMY:
+				std::cout << "Collision with ENEMY!" << std::endl;
+				TheSoundManager::Instance()->playSound("hurt", 0);
+				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+				break;
 			default:
 				//std::cout << "Collision with unknown type!" << std::endl;
 				break;

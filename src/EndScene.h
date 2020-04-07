@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Label.h"
 #include "RestartButton.h"
+#include "Background.h"
 
 class Ocean;
 
@@ -28,7 +29,8 @@ private:
 	// Game Objects
 	Label* m_pGameOverLabel{};
 	RestartButton* m_pRestartButton{};
-	Ocean* m_pOcean{};
+	//Ocean* m_pOcean{};
+	Background* m_pBackground;
 
 	// private data member
 	glm::vec2 m_mousePosition;

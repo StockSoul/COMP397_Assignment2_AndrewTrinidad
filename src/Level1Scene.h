@@ -8,6 +8,9 @@
 #include "Ocean.h"
 #include "Cloud.h"
 #include "Config.h"
+#include "Enemy.h"
+#include "Coin.h"
+#include "Background.h"
 
 class Level1Scene : public Scene
 {
@@ -27,12 +30,14 @@ public:
 private:
 	// game objects
 	Plane* m_pPlane;
-	Island* m_pIsland;
-	Ocean* m_pOcean;
+	//Island* m_pIsland;
+	Coin* m_pCoin;
+	//Ocean* m_pOcean;
+	Background* m_pBackground;
 
-	int m_cloudNum = Config::CLOUD_NUM;
-	std::vector<Cloud*> m_pClouds;
-	void m_buildClouds();
+	int m_enemyNum = Config::ENEMY_NUM;
+	std::vector<Enemy*> m_pEnemy;
+	void m_buildEnemies();
 
 	// private data member
 	glm::vec2 m_mousePosition;

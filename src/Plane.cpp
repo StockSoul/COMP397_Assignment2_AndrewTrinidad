@@ -3,7 +3,7 @@
 
 Plane::Plane() :m_maxSpeed(5.0f), m_isMoving(false)
 {
-	TheTextureManager::Instance()->load("../Assets/textures/plane.png",
+	TheTextureManager::Instance()->load("../Assets/textures/Player.png",
 		"plane", TheGame::Instance()->getRenderer());
 
 	// measure size by querying the texture

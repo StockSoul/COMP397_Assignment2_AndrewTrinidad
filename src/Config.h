@@ -11,6 +11,7 @@ public:
 	static const int TILE_SIZE = 40;
 	static const int TILE_COST = 1;
 	static const int CLOUD_NUM = 3;
+	static const int ENEMY_NUM = 5;
 	static const int SCORE = 0;
 	static const int LIVES = 5;
 };

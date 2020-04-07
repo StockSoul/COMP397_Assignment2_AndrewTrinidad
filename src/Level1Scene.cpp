@@ -14,13 +14,13 @@ Level1Scene::~Level1Scene()
 
 void Level1Scene::draw()
 {
-	m_pOcean->draw();
+	m_pBackground->draw();
 	
-	m_pIsland->draw();
+	m_pCoin->draw();
 	
 	m_pPlane->draw();
 
-	for (auto cloud : m_pClouds)
+	for (auto cloud : m_pEnemy)
 	{
 		cloud->draw();
 	}
@@ -30,21 +30,19 @@ void Level1Scene::draw()
 
 void Level1Scene::update()
 {
-	m_pOcean->update();
+	m_pBackground->update();
 
-	m_pIsland->update();
+	m_pCoin->update();
 
 	m_pPlane->setPosition(glm::vec2(m_mousePosition.x, m_pPlane->getPosition().y));
 	m_pPlane->update();
 
-	//CollisionManager::AABBCheck(m_pPlane, m_pIsland);
+	CollisionManager::squaredRadiusCheck(m_pPlane, m_pCoin);
 
-	CollisionManager::squaredRadiusCheck(m_pPlane, m_pIsland);
-
-	for (auto cloud : m_pClouds)
+	for (auto enemy: m_pEnemy)
 	{
-		cloud->update();
-		CollisionManager::squaredRadiusCheck(m_pPlane, cloud);
+		enemy->update();
+		CollisionManager::squaredRadiusCheck(m_pPlane, enemy);
 	}
 }
 
@@ -147,17 +145,16 @@ void Level1Scene::handleEvents()
 
 void Level1Scene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 
-	m_pIsland = new Island(); // instantiates Island
-	addChild(m_pIsland);
+	m_pCoin = new Coin();
+	addChild(m_pCoin);
 	
-	m_pPlane = new Plane(); // instantiates Plane
+	m_pPlane = new Plane();
 	addChild(m_pPlane);
 
-	// instantiate Cloud Pool
-	m_buildClouds();
+	m_buildEnemies();
 
 	ScoreBoardManager::Instance()->Start();
 }
@@ -167,13 +164,13 @@ glm::vec2 Level1Scene::getMousePosition()
 	return m_mousePosition;
 }
 
-void Level1Scene::m_buildClouds()
+void Level1Scene::m_buildEnemies()
 {
-	for (auto i = 0; i < m_cloudNum; ++i)
+	for (auto i = 0; i < m_enemyNum; ++i)
 	{
-		auto cloud = new Cloud();
-		m_pClouds.push_back(cloud);
-		addChild(cloud);
+		auto enemy = new Enemy();
+		m_pEnemy.push_back(enemy);
+		addChild(enemy);
 	}
 }
 
