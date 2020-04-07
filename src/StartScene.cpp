@@ -107,7 +107,7 @@ void StartScene::start()
 
 	
 	SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pStartLabel = new Label("Lumpy Space Adventure", "NeonFuture", 40, yellow, 
+	m_pStartLabel = new Label("Space Coin Grabbers", "NeonFuture", 40, yellow, 
 		glm::vec2(Config::SCREEN_WIDTH * 0.5f, 100.0f));
 	m_pStartLabel->setParent(this);
 	addChild(m_pStartLabel);
